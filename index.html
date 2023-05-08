@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS do Projeto -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Script do Projeto -->
+    <script src="scripts/script.js"></script>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <div id="main-box">
+        <header>
+            
+            <h1><i class="fa-sharp fa-solid fa-check-double"></i> Lista de tarefas</h1>
+        </header>
+        <div id="tasks-lists-box">
+            <h4 class="tlb-item">Lista atual:</h4>
+            <select id="tasks-lists-sel" class="tlb-item">
+                <option value="Principal" class="tasks-lists-op">Principal</option>
+            </select>
+            <input type="text" id="add-new-list" class="tlb-item hide">
+            <button id="confirm-list" class="tlb-item hide">
+                <i class="fa-sharp fa-solid fa-check"></i> 
+            </button>
+            <button id="add-new-task-list" class="tlb-item">
+                <i class="fa-sharp fa-solid fa-plus"></i>
+            </button>
+        </div>
+        <nav id="navbar">
+            <input type="text" id="search-input" class="nav-item hide">
+            <button id="search-button" class="nav-item">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
+            <h4 class="nav-item">Filtro</h4>
+            <select id="tasks-filter" class="nav-item">
+                <option value="all">Todos as tarefas</option>
+                <option value="done">Tarefas feitas</option>
+                <option value="to do">Tarefas a fazer</option>
+            </select>
+        </nav>
+        <div id="tasks-box">
+            <div id="create-task-field" class="hide">
+                <input type="text" id="new-task-fied">
+                <button>
+                    <i class="fa-sharp fa-solid fa-check"></i> 
+                </button>
+                <h4 class="tlb-item">Adicionar a lista:</h4>
+                <select id="add-task-to-list" class="tlb-item">
+                    <option value="Principal">Principal</option>
+                </select>
+            </div>
+            <div id="create-task">
+                <h4>Nova tarefa</h4>
+                <button id="new-task-btn">
+                    <i class="fa-sharp fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div id="edit-task" class="">
+                <input type="text" id="edit-task-field">
+                <button><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div id="tasks-todo-box">
+                <div class="task done">
+                    <i class="fa-sharp fa-regular fa-square"></i>
+                    <h3 class="taskTitle tlb-item">Adicionar minha primeira tarefa!</h3>
+                    <button class="finish-task">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button class="edit-task">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="remove-task">
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
