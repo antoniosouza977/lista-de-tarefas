@@ -6,16 +6,21 @@ const new_tsk_itens = document.querySelectorAll('.ntsk-item')
 const cancel_newTask_btn = document.querySelector('#cancel-new-task-btn')
 const confirm_newTaskli_btn = document.querySelector('#confirm-list-btn')
 const name_newTaskLi = document.querySelector('#add-new-list-input')
+const currentList_h4 = document.querySelector('#current-list-h4')
 
 
 
 add_new_list_btn.addEventListener('click', () => {
+    currentList_h4.style.display = 'none';
+    tsk_li_sel.style.display = 'none';
     add_new_list_btn.style.display = 'none'
     new_tsk_itens.forEach((tskiten) => {
         tskiten.style.display = 'flex';
     })
 });
 cancel_newTask_btn.addEventListener('click', () => {
+    currentList_h4.style.display = 'flex';
+    tsk_li_sel.style.display = 'flex';
     add_new_list_btn.style.display = 'flex'
     new_tsk_itens.forEach((tskiten) => {
         tskiten.style.display = 'none';

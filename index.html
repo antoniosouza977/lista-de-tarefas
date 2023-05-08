@@ -18,10 +18,11 @@
             <h1><i class="fa-sharp fa-solid fa-check-double"></i> Lista de tarefas</h1>
         </header>
         <div id="tasks-lists-box">
-            <h4 class="tlb-item">Lista atual:</h4>
+            <h4 id="current-list-h4" class="tlb-item">Lista atual:</h4>
             <select id="tasks-lists-sel" class="tlb-item">
                 <option value="Principal" class="tasks-lists-op">Principal</option>
             </select>
+            <h4 class="tlb-item ntsk-item" style="display: none;">Nova Lista:</h4>
             <input type="text" id="add-new-list-input" class="tlb-item ntsk-item" placeholder="Nome da nova lista" style="display: none;">
             <button id="confirm-list-btn" class="tlb-item ntsk-item" style="display: none;">
                 <i class="fa-sharp fa-solid fa-check"></i> 
@@ -29,7 +30,7 @@
             <button id="cancel-new-task-btn" class="tlb-item ntsk-item" style="display: none;">
                 <i class="fa-solid fa-ban"></i>
             </button>
-            <button id="add-new-task-list" class="tlb-item" style="display: flex;">
+            <button id="add-new-task-list" class="tlb-item">
                 <i class="fa-sharp fa-solid fa-plus"></i>
             </button>
         </div>
