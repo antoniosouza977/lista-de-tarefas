@@ -71,9 +71,7 @@ input {
 input:focus{
     outline: none;
 }
-.hide {
-    display: none;
-}
+
 /* Header */
 #main-box header {
     display: flex;
@@ -101,7 +99,9 @@ input:focus{
 .tlb-item {
     margin: 0 0.4rem;
 }
-
+#add-new-list-btn {
+    display: flex;
+}
 /* Navbar */
 
 #navbar {
@@ -156,4 +156,7 @@ input:focus{
 .task h3{
     font-weight: 400;
     font-size: 1rem;
+}
+.hide {
+    display: none;
 }

@@ -7,7 +7,7 @@
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="styles/style.css">
     <!-- Script do Projeto -->
-    <script src="scripts/script.js"></script>
+    <script src="scripts/script.js" defer></script>
      <!-- Font Awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Lista de Tarefas</title>
@@ -15,7 +15,6 @@
 <body>
     <div id="main-box">
         <header>
-            
             <h1><i class="fa-sharp fa-solid fa-check-double"></i> Lista de tarefas</h1>
         </header>
         <div id="tasks-lists-box">
@@ -23,11 +22,14 @@
             <select id="tasks-lists-sel" class="tlb-item">
                 <option value="Principal" class="tasks-lists-op">Principal</option>
             </select>
-            <input type="text" id="add-new-list" class="tlb-item hide">
-            <button id="confirm-list" class="tlb-item hide">
+            <input type="text" id="add-new-list-input" class="tlb-item ntsk-item" placeholder="Nome da nova lista" style="display: none;">
+            <button id="confirm-list-btn" class="tlb-item ntsk-item" style="display: none;">
                 <i class="fa-sharp fa-solid fa-check"></i> 
             </button>
-            <button id="add-new-task-list" class="tlb-item">
+            <button id="cancel-new-task-btn" class="tlb-item ntsk-item" style="display: none;">
+                <i class="fa-solid fa-ban"></i>
+            </button>
+            <button id="add-new-task-list" class="tlb-item" style="display: flex;">
                 <i class="fa-sharp fa-solid fa-plus"></i>
             </button>
         </div>
@@ -60,7 +62,7 @@
                     <i class="fa-sharp fa-solid fa-plus"></i>
                 </button>
             </div>
-            <div id="edit-task" class="">
+            <div id="edit-task" class="hide">
                 <input type="text" id="edit-task-field">
                 <button><i class="fa-solid fa-check"></i></button>
             </div>
