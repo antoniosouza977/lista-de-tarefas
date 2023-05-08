@@ -38,6 +38,8 @@ confirm_newTaskli_btn.addEventListener('click',() => {
         tsk_li_sel.appendChild(newtask);
 
         name_newTaskLi.value = '';
+        currentList_h4.style.display = 'flex';
+        tsk_li_sel.style.display = 'flex';
         add_new_list_btn.style.display = 'flex'
         new_tsk_itens.forEach((tskiten) => {
         tskiten.style.display = 'none';
