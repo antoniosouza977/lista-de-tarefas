@@ -91,10 +91,13 @@ input:focus{
 #tasks-lists-box {
     display: flex;
     margin: 1rem auto;
-    max-width: 95%;
+    width: 95%;
     border-bottom: 1px solid #BAF0FF;
     padding-bottom: .8rem;
     
+}
+#add-new-list-input{
+    width: 40%;
 }
 .tlb-item {
     margin: 0 0.4rem;
@@ -144,10 +147,13 @@ input:focus{
     display: flex;
     padding-bottom: 1rem;
 }
+#tasks-todo-box {
+    margin: 0 auto;
+}
 .task {
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
 }
 .done h3{
     font-style: italic;
