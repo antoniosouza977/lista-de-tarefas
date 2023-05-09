@@ -46,6 +46,8 @@ confirm_newTaskli_btn.addEventListener('click',() => {
         tskiten.style.display = 'none';
         tasksLists_select.value = newtask.value;
         refresh_lists();
+
+        
     })      
     } else{
         name_newTaskLi.value = 'Digite um nome!'
@@ -112,6 +114,7 @@ confirm_newTask_btn.addEventListener('click', () => {
         create_newTask_input.style.display = 'none'
         tasks = document.querySelectorAll('.task')
         refresh_lists();
+        checkFirstTask();
     } else {
         input_newTask_Name.value = 'Insira um nome!'
         setTimeout(() => {
@@ -208,4 +211,13 @@ const toggleNewListsDivs = () => {
     new_tsk_itens.forEach((tskiten) => {
         tskiten.style.display = 'none';
     })      
+}
+const checkFirstTask = () => {
+    if(tasks[0].classList.contains('exemplo')){
+        if (!tasks[0].classList.contains('done')){
+            tasks[0].classList.add('done')
+            tasks[0].querySelector('i').classList.replace('fa-square','fa-square-check');
+            tasks[0].style.opacity ='0.5'
+        }
+    }
 }

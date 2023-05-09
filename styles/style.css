@@ -194,11 +194,11 @@ input:focus{
     font-style: italic;
     text-decoration: line-through;
 }
+.done > i{
+    color: green;
+}
 .task h3{
     font-weight: 400;
     font-size: 1rem;
     width: 80%;
-}
-.hide {
-    display: none;
 }
