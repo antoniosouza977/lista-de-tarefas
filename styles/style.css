@@ -30,10 +30,10 @@ body {
     min-height: 500px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.11);
-    border-bottom: 1px solid #BAF0FF;
+    border: 1px solid #BAF0FF;
 }
 button {
-    margin: 0 .4rem;
+    margin: 0 .2rem;
     background-color: #fdfdfd98;
     color: #102F5e;
     border: 1px solid #102F5e;
@@ -49,6 +49,14 @@ button {
 button:hover {
     background-color: #102F5e;
     color: #FDFDFD;
+}
+button:hover > i {
+    color: #FDFDFD;
+}
+button i {
+    color: #102F5e;
+    font-weight: bold;
+    pointer-events: none;
 }
 select {
     font-size: .9rem;
@@ -128,10 +136,27 @@ input:focus{
 }
 #create-task-field {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: .5rem 0 2rem 0;
+    margin: .8rem auto;
+    border-bottom: 1px solid #BAF0FF;
+}
+#div_input_Newtask{
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 1rem ;
+}
+#div_selec_newTask {
+    display: flex;
+}
+#new-task-fied {
+    width: 70%;
 }
 #create-task {
     display: flex;
-    margin: 1rem auto;
+    margin: 0 auto;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -143,17 +168,27 @@ input:focus{
     align-items: center;
     justify-content: center;
 }
+#edit-task-div {
+    display: flex;
+    width: 95%;
+    padding: 1rem;
+}
+#edit-task-div input{
+    width: 90%;
+}
 #edit-task {
     display: flex;
     padding-bottom: 1rem;
 }
 #tasks-todo-box {
+    padding-top: 1rem;
     margin: 0 auto;
+    width: 100%;
 }
 .task {
-    margin: 0 auto;
+    margin: 1rem auto;
     display: flex;
-    align-items: center;
+    align-items: center;    
 }
 .done h3{
     font-style: italic;
@@ -162,6 +197,7 @@ input:focus{
 .task h3{
     font-weight: 400;
     font-size: 1rem;
+    width: 80%;
 }
 .hide {
     display: none;

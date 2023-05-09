@@ -47,15 +47,22 @@
             </select>
         </nav>
         <div id="tasks-box">
-            <div id="create-task-field" class="hide">
-                <input type="text" id="new-task-fied">
-                <button>
-                    <i class="fa-sharp fa-solid fa-check"></i> 
-                </button>
-                <h4 class="tlb-item">Adicionar a lista:</h4>
-                <select id="add-task-to-list" class="tlb-item">
-                    <option value="Principal">Principal</option>
-                </select>
+            <div id="create-task-field" style="display: none;">
+                <div id="div_input_Newtask">
+                    <input type="text" id="new-task-fied" placeholder="O que voc deseja fazer?">
+                    <button id="confirm-newTask-btn">
+                        <i class="fa-sharp fa-solid fa-check"></i>
+                    </button>
+                    <button id="cancel-newTask-btn">
+                        <i class="fa-solid fa-ban"></i>
+                    </button>
+                </div>
+                <div id="div_selec_newTask">
+                    <h4 class="tlb-item">Adicionar nova tarefa a:</h4>
+                    <select id="add-task-to-list" class="tlb-item">
+                        <option value="Principal">Principal</option>
+                    </select>
+                </div>
             </div>
             <div id="create-task">
                 <h4>Nova tarefa</h4>
@@ -63,12 +70,12 @@
                     <i class="fa-sharp fa-solid fa-plus"></i>
                 </button>
             </div>
-            <div id="edit-task" class="hide">
-                <input type="text" id="edit-task-field">
-                <button><i class="fa-solid fa-check"></i></button>
+            <div id="edit-task-div" style="display: none;">
+                <input type="text" id="edit-task-input">
+                <button id="confirm_newTaskName_btn"><i class="fa-solid fa-check"></i></button>
             </div>
             <div id="tasks-todo-box">
-                <div class="task done">
+                <div class="task Principal">
                     <i class="fa-sharp fa-regular fa-square"></i>
                     <h3 class="taskTitle tlb-item">Adicionar minha primeira tarefa!</h3>
                     <button class="finish-task">
