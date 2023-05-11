@@ -22,7 +22,6 @@
             <select id="tasks-lists-sel" class="tlb-item">
                 <option value="Principal" class="tasks-lists-op">Principal</option>
             </select>
-            <h4 class="tlb-item ntsk-item" style="display: none;">Nova Lista:</h4>
             <input type="text" id="add-new-list-input" class="tlb-item ntsk-item" placeholder="Nome da nova lista" style="display: none;">
             <button id="confirm-list-btn" class="tlb-item ntsk-item" style="display: none;">
                 <i class="fa-sharp fa-solid fa-check"></i> 
@@ -35,16 +34,23 @@
             </button>
         </div>
         <nav id="navbar">
-            <input type="text" id="search-input" class="nav-item hide">
-            <button id="search-button" class="nav-item">
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            </button>
-            <h4 class="nav-item">Filtro</h4>
-            <select id="tasks-filter" class="nav-item">
-                <option value="all">Todos as tarefas</option>
-                <option value="done">Tarefas feitas</option>
-                <option value="to do">Tarefas a fazer</option>
-            </select>
+            <div id="search_div">
+                <input type="text" id="search-input" class="nav-item" style="display: none;">
+                <button id="search-button" class="nav-item">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button id="erase_search" class="nav-item" style="display: none;">
+                    <i class="fa-sharp fa-solid fa-rotate-left"></i>
+                </button>
+            </div>
+            <div id="filter_div" style="display: flex;">
+                <h4 class="nav-item">Filtro</h4>
+                <select id="tasks-filter" class="nav-item">
+                    <option value="all">Todos as tarefas</option>
+                    <option value="done">Tarefas feitas</option>
+                    <option value="todo">Tarefas a fazer</option>
+                </select>
+            </div>
         </nav>
         <div id="tasks-box">
             <div id="create-task-field" style="display: none;">

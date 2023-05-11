@@ -26,7 +26,7 @@ body {
 #main-box {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.200);
     border-radius: .2rem;
-    max-width: 1000px;
+    max-width: 700px;
     min-height: 500px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.11);
@@ -105,7 +105,7 @@ input:focus{
     
 }
 #add-new-list-input{
-    width: 40%;
+    width: 50%;
 }
 .tlb-item {
     margin: 0 0.4rem;
@@ -117,13 +117,29 @@ input:focus{
 
 #navbar {
     display: flex;
+    flex-direction: row;
     margin: 1rem auto;
     max-width: 95%;
     border-bottom: 1px solid #BAF0FF;
     padding-bottom: .8rem;
     
 }
+#search_div {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+#search-button{
+    margin-left: 30%;
+}
+#filter_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%;  
+}
 .nav-item {
+    display: inline-block;
     margin: 0 0.4rem;
 }
 /* Lista de Tarefaas */
