@@ -341,6 +341,9 @@ const refresh_filter = () => {
 
 
  document.addEventListener('DOMContentLoaded', () =>{
+    tasks.forEach(task => {
+        task.style.display = 'flex'
+    })
     
      if((localStorage.getItem('tasks') === null) && (localStorage.getItem('lists') === null)){
         localStorage.setItem('lists', tasksLists_select.innerHTML)
@@ -348,7 +351,6 @@ const refresh_filter = () => {
     } else {
         tasksLists_select.innerHTML = localStorage.getItem('lists')
         tasks_mainBox.innerHTML = localStorage.getItem('tasks')
-        new_task_sel.innerHTML = tasksLists_select.innerHTML;
     } 
     if (localStorage.getItem('listvalue') != null) {
         tasksLists_select.value = localStorage.getItem('listvalue')
