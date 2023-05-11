@@ -358,6 +358,6 @@ const refresh_filter = () => {
         tasksLists_select.value = localStorage.getItem('listvalue')
     }
     refresh_lists();
-    
+    tasks = document.querySelectorAll('.task')
 })
  
