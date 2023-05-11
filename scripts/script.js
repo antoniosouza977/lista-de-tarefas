@@ -32,7 +32,8 @@ add_NewList_btn.addEventListener('click', () => {
     name_newTaskLi.focus();
 });
 cancel_NewList.addEventListener('click', () => {
-   toggleNewListsDivs();      
+   toggleNewListsDivs();  
+       
 });
 confirm_newTaskli_btn.addEventListener('click',() => {
     if (!/^\s*$/.test(name_newTaskLi.value)){
@@ -97,6 +98,7 @@ back_search.addEventListener('click', () => {
     closeSearch();
     FilterDiv.style.display = 'flex'
     search_div.style.width= '100%'
+    refresh_lists();
 });
 
 //filtro
