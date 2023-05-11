@@ -13,6 +13,7 @@ Cores:
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 
 }
 body {
@@ -24,37 +25,37 @@ body {
 }
 
 #main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.200);
     border-radius: .2rem;
     max-width: 700px;
-    min-height: 500px;
+    min-height: 550px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.11);
     border: 1px solid #BAF0FF;
 }
 button {
-    margin: 0 .2rem;
-    background-color: #fdfdfd98;
+    margin: 0 .3rem;
+    background-color: transparent;
+    border: none;
     color: #102F5e;
-    border: 1px solid #102F5e;
-    border-radius: .3rem;
     padding: .2rem .5rem;
     font-size: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.4s;
 }
-button:hover {
-    background-color: #102F5e;
-    color: #FDFDFD;
-}
+
 button:hover > i {
-    color: #FDFDFD;
+    color: #2160be;
 }
 button i {
+    transition: 0.4s;
     color: #102F5e;
+    font-size: 1.28rem;
     font-weight: bold;
     pointer-events: none;
 }
@@ -81,103 +82,118 @@ input:focus{
 }
 
 /* Header */
-#main-box header {
+header {
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.7rem 0;
     border-bottom: 1px solid #BAF0FF;
-    max-width: 95%;
+    width: 95%;
     margin: 0 auto;
 } 
-#main-box header h1 {
+header h1 {
     font-weight: 300;
+    color: #39394e;
 }
 
 /* Campo de seleção das listas */
 
 #tasks-lists-box {
+    padding: 1rem;
     display: flex;
-    margin: 1rem auto;
+    flex-direction: row;
+    margin: 0 auto;
     width: 95%;
-    border-bottom: 1px solid #BAF0FF;
-    padding-bottom: .8rem;
-    
+    border-bottom: 1px solid #BAF0FF; 
 }
-#add-new-list-input{
-    width: 50%;
-}
-.tlb-item {
-    margin: 0 0.4rem;
-}
-#add-new-list-btn {
+#current-list-div{
+    width: 70%;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
+#current-list-div > select {
+    margin-left: .5rem;
+}
+#list-buttons-div {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-around;
+}
+#new-list-div {
+    justify-content: space-around;
+    width: 100%;
+}
+#new-list-div > input {
+    width: 70%;
+}
+
 /* Navbar */
 
 #navbar {
     display: flex;
     flex-direction: row;
-    margin: 1rem auto;
-    max-width: 95%;
+    width: 95%;
     border-bottom: 1px solid #BAF0FF;
-    padding-bottom: .8rem;
+    padding: 1rem;
     
 }
 #search_div {
     display: flex;
-    width: 100%;
+    width: 50%;
     justify-content: flex-start;
 }
-#search-button{
-    margin-left: 30%;
+#glass_button_div {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #filter_div {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 50%;  
+    width: 75%;  
 }
-.nav-item {
-    display: inline-block;
-    margin: 0 0.4rem;
+#filter_div h4{
+    padding-right: .5rem;
 }
 /* Lista de Tarefaas */
+
 #tasks-box {
     display: flex;
     flex-direction: column;
-    max-width: 95%;
-    margin: 0 auto;
-    
+    width: 95%;
+    padding: 0 1rem;
 }
 #create-task-field {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: .5rem 0 2rem 0;
-    margin: .8rem auto;
-    border-bottom: 1px solid #BAF0FF;
 }
 #div_input_Newtask{
     display: flex;
     width: 100%;
-    margin: 0;
-    padding-bottom: 1rem ;
+    padding: 1rem 0;
 }
 #div_selec_newTask {
     display: flex;
+    padding-bottom: 1rem;
+}
+#div_selec_newTask > h4 {
+    padding-right: .5rem;
 }
 #new-task-fied {
     width: 70%;
 }
 #create-task {
     display: flex;
-    margin: 0 auto;
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0 2rem 0;
-    border-bottom: 1px solid #BAF0FF;
+    padding: 1rem;
+    
 }
 #create-task h4 {
     display: flex;
@@ -185,26 +201,28 @@ input:focus{
     justify-content: center;
 }
 #edit-task-div {
+    border-top: 1px solid #BAF0FF;
     display: flex;
     width: 95%;
     padding: 1rem;
 }
 #edit-task-div input{
-    width: 90%;
-}
-#edit-task {
-    display: flex;
-    padding-bottom: 1rem;
-}
-#tasks-todo-box {
-    padding-top: 1rem;
-    margin: 0 auto;
     width: 100%;
 }
+
+#tasks-todo-box {
+    border-top: 1px solid #BAF0FF;
+    padding-top: 1rem 0;
+    width: 95%;
+}
 .task {
-    margin: 1rem auto;
+    width: 100%;
+    margin: .5rem 0;
     display: flex;
     align-items: center;    
+}
+.task > i {
+    padding-right: .5rem;
 }
 .done h3{
     font-style: italic;
@@ -217,4 +235,25 @@ input:focus{
     font-weight: 400;
     font-size: 1rem;
     width: 80%;
+}
+footer p{
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+    font-style: italic;
+}
+footer p > img {
+    height: 1rem;
+}
+#imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+#imgs a > img {
+    cursor: pointer;
+    height: 1.5rem;
+    margin: 0 .5rem;
 }

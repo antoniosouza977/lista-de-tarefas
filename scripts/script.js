@@ -1,103 +1,91 @@
-// Selecionando HTML do documento para LocalStorage
-const Doc_HTML = document.querySelector('#main-box')
 
 /* Criação de listas personalizadas */
-let tasks = document.querySelectorAll('.task')
-const tasksLists_select = document.querySelector('#tasks-lists-sel')
-const add_NewList_btn = document.querySelector('#add-new-task-list')
-const new_tsk_itens = document.querySelectorAll('.ntsk-item')
-const cancel_NewList = document.querySelector('#cancel-new-task-btn')
-const confirm_newTaskli_btn = document.querySelector('#confirm-list-btn')
-const name_newTaskLi = document.querySelector('#add-new-list-input')
-const currentList_h4 = document.querySelector('#current-list-h4')
+
+let tasks = document.querySelectorAll('.task');
+
+const current_list_select = document.querySelector('#tasks-lists-sel');
+const new_list_add_btn = document.querySelector('#add-new-task-list');
+const new_list_cancel_btn = document.querySelector('#cancel-new-task-btn');
+const confirm_newTaskli_btn = document.querySelector('#confirm-list-btn');
+const name_newTaskLi_input = document.querySelector('#add-new-list-input');
+const current_list_div = document.querySelector('#current-list-div');
+const new_list_div = document.querySelector('#new-list-div');
+const list_buttons_div = document.querySelector('#list-buttons-div');
 
 
-tasksLists_select.addEventListener('input', () => {
-    localStorage.setItem('listvalue',tasksLists_select.value) 
-    new_task_sel.value = tasksLists_select.value;
+current_list_select.addEventListener('input', () => {
+    localStorage.setItem('listvalue',current_list_select.value); 
+    new_task_sel.value = current_list_select.value;
     refresh_lists();
     toggleNewTaskDivs();
-})
-add_NewList_btn.addEventListener('click', () => {
+});
+new_list_add_btn.addEventListener('click', () => {
     toggleNewTaskDivs();
     closeSearch();
-    currentList_h4.style.display = 'none';
-    tasksLists_select.style.display = 'none';
-    add_NewList_btn.style.display = 'none'
-    new_tsk_itens.forEach((tskiten) => {
-        tskiten.style.display = 'flex';
-    })
-    name_newTaskLi.value = '';
-    
-    name_newTaskLi.focus();
+    current_list_div.style.display = 'none';
+    list_buttons_div.style.display = 'none';
+    new_list_div.style.display = 'flex';
+    name_newTaskLi_input.value = '';
+    name_newTaskLi_input.focus();
 });
-cancel_NewList.addEventListener('click', () => {
+new_list_cancel_btn.addEventListener('click', () => {
    toggleNewListsDivs();  
-       
 });
 confirm_newTaskli_btn.addEventListener('click',() => {
-    if (!/^\s*$/.test(name_newTaskLi.value)){
 
+    if (!/^\s*$/.test(name_newTaskLi_input.value)){
         let newtask = document.createElement('option');
-
-        newtask.value = name_newTaskLi.value;
-        newtask.textContent = name_newTaskLi.value;
-
-        tasksLists_select.appendChild(newtask);
-
-        name_newTaskLi.value = '';
-        currentList_h4.style.display = 'flex';
-        tasksLists_select.style.display = 'flex';
-        add_NewList_btn.style.display = 'flex'
-        new_tsk_itens.forEach((tskiten) => {
-        tskiten.style.display = 'none';
-        tasksLists_select.value = newtask.value;
+        newtask.value = name_newTaskLi_input.value;
+        newtask.textContent = name_newTaskLi_input.value;
+        current_list_select.appendChild(newtask);
+        current_list_select.value = newtask.value; 
+        new_task_sel.innerHTML = current_list_select.innerHTML;
+        localStorage.setItem('listvalue',current_list_select.value)
+        toggleNewListsDivs(); 
         refresh_lists();
         storageTasks();
-        new_task_sel.innerHTML = tasksLists_select.innerHTML;
-        localStorage.setItem('listvalue',tasksLists_select.value)
-    })      
-    } else{
-        name_newTaskLi.value = 'Digite um nome!'
+    } else {
+        name_newTaskLi_input.value = 'Digite um nome!';
         setTimeout(() => {
-            name_newTaskLi.value = '';
-        },750)
+            name_newTaskLi_input.value = '';
+        },1000);
     }
 });
+
 /* Busca e filtro */
-const search_input = document.querySelector('#search-input')
-const search_btn = document.querySelector('#search-button')
-const back_search = document.querySelector('#erase_search')
-let tasks_titles = document.querySelectorAll('.taskTitle')
-const search_div = document.querySelector('#search_div')
+const search_input = document.querySelector('#search-input');
+const search_btn = document.querySelector('#search-button');
+const back_search_btn = document.querySelector('#erase_search');
+let tasks_titles = document.querySelectorAll('.taskTitle');
+const search_div = document.querySelector('#search_div');
+const glass_button_div = document.querySelector('#glass_button_div');
 
 search_btn.addEventListener('click', () => {
     toggleFIlterDiv();
     toggleNewTaskDivs();
     toggleNewListsDivs();
-    erase_search.style.display = 'flex'  
-    search_input.style.display = 'flex'
-    search_btn.style.display = 'none'
+    search_div.style.display = 'flex';
+    glass_button_div.style.display = 'none';
     search_input.value = '';
     search_input.focus();     
-})
+});
 search_input.addEventListener('input', () => {
-    tasks_titles = document.querySelectorAll('.taskTitle')
+    tasks_titles = document.querySelectorAll('.taskTitle');
     let search_input_value = search_input.value.toLowerCase();
     
     tasks_titles.forEach(title => {
         let titletext = title.textContent.toLowerCase();
         if(titletext.includes(search_input_value)){
-            title.closest('div').style.display = 'flex'
+            title.closest('div').style.display = 'flex';
         } else {
-            title.closest('div').style.display = 'none' 
+            title.closest('div').style.display = 'none'; 
         }
     });
 });
-back_search.addEventListener('click', () => {
+back_search_btn.addEventListener('click', () => {
     closeSearch();
-    FilterDiv.style.display = 'flex'
-    search_div.style.width= '100%'
+    FilterDiv.style.display = 'flex';
+    glass_button_div.style.display = 'flex';
     refresh_lists();
 });
 
@@ -106,9 +94,9 @@ back_search.addEventListener('click', () => {
 const filter = document.querySelector('#tasks-filter')
 
 filter.addEventListener('change', () => {
-    refresh_filter();
-    
+    refresh_filter(); 
   });
+  
 /* Criação de novas tarefas */
 
 const new_task_btn = document.querySelector("#new-task-btn");
@@ -121,15 +109,22 @@ const input_newTask_Name = document.querySelector('#new-task-fied')
 const tasks_mainBox = document.querySelector('#tasks-todo-box')
 
 new_task_btn.addEventListener('click', () => {
+    new_task_sel.innerHTML = current_list_select.innerHTML;
     toggleNewListsDivs();
     input_newTask_Name.value = '';
     add_newTask_div.style.display = 'none'
     create_newTask_input.style.display = 'flex'
-    new_task_sel.value = tasksLists_select.value;
+    new_task_sel.value = current_list_select.value;
     input_newTask_Name.focus();
     closeSearch();
     refresh_lists();
 });
+
+new_task_sel.addEventListener('input', () => {
+    current_list_select.value = new_task_sel.value
+    refresh_lists();
+})
+
 confirm_newTask_btn.addEventListener('click', () => {
     if (!/^\s*$/.test(input_newTask_Name.value)) { // Testa se o valor do input não possui apenas espaços.
         // criação da div principal
@@ -245,8 +240,8 @@ document.addEventListener('click', (e) => {
 /* Funçoes de uso geral */
 
 const refresh_lists = () => {
-    if (tasksLists_select.value.includes(' ')) {
-        let refreshToSelect = tasksLists_select.value.replace(/\s/g, '-')
+    if (current_list_select.value.includes(' ')) {
+        let refreshToSelect = current_list_select.value.replace(/\s/g, '-')
         tasks.forEach((task) => {
             if (!task.classList.contains(`${refreshToSelect}`)){
                 task.style.display = 'none';
@@ -256,9 +251,9 @@ const refresh_lists = () => {
         })
     } else {
         tasks.forEach((task) => {
-            if (!task.classList.contains(`${tasksLists_select.value}`)){
+            if (!task.classList.contains(`${current_list_select.value}`)){
                 task.style.display = 'none';
-            } else if(task.classList.contains(`${tasksLists_select.value}`)){
+            } else if(task.classList.contains(`${current_list_select.value}`)){
                 task.style.display = 'flex';
             }
         })
@@ -272,12 +267,10 @@ const toggleNewTaskDivs = () => {
 }
 
 const toggleNewListsDivs = () => {
-    currentList_h4.style.display = 'flex';
-    tasksLists_select.style.display = 'flex';
-    add_NewList_btn.style.display = 'flex'
-    new_tsk_itens.forEach((tskiten) => {
-        tskiten.style.display = 'none';
-    })      
+    current_list_div.style.display = 'flex'
+    list_buttons_div.style.display = 'flex'
+    new_list_div.style.display = 'none'
+    name_newTaskLi_input.value = '';
 }
 const checkFirstTask = () => {
     if(tasks[0].classList.contains('exemplo')){
@@ -289,9 +282,9 @@ const checkFirstTask = () => {
     }
 }
 const closeSearch = () => {
-    back_search.style.display = 'none'  
-    search_input.style.display = 'none'
-    search_btn.style.display = 'flex'
+    FilterDiv.style.display = 'flex'
+    glass_button_div.style.display = 'flex'
+    search_div.style.display = 'none'
     search_input.value = '';
     tasks.forEach(task => {
         task.style.display = 'flex'
@@ -304,7 +297,7 @@ const toggleFIlterDiv = () => {
 
 const storageTasks = () => {
     localStorage.setItem('tasks', tasks_mainBox.innerHTML)
-    localStorage.setItem('lists', tasksLists_select.innerHTML)
+    localStorage.setItem('lists', current_list_select.innerHTML)
 }
 const refresh_filter = () => {
     const selectedOption = filter.value;
@@ -348,16 +341,15 @@ const refresh_filter = () => {
     })
     
      if((localStorage.getItem('tasks') === null) && (localStorage.getItem('lists') === null)){
-        localStorage.setItem('lists', tasksLists_select.innerHTML)
+        localStorage.setItem('lists', current_list_select.innerHTML)
         localStorage.setItem('tasks', tasks_mainBox.innerHTML)
     } else {
-        tasksLists_select.innerHTML = localStorage.getItem('lists')
+        current_list_select.innerHTML = localStorage.getItem('lists')
         tasks_mainBox.innerHTML = localStorage.getItem('tasks')
     } 
     if (localStorage.getItem('listvalue') != null) {
-        tasksLists_select.value = localStorage.getItem('listvalue')
+        current_list_select.value = localStorage.getItem('listvalue')
     }
     refresh_lists();
     tasks = document.querySelectorAll('.task')
 })
- 
