@@ -31,7 +31,7 @@ body {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.200);
     border-radius: .2rem;
     max-width: 700px;
-    min-height: 550px;
+    height: 100%;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.11);
     border: 1px solid #BAF0FF;
@@ -128,7 +128,27 @@ header h1 {
 #new-list-div > input {
     width: 70%;
 }
+#confirm_delete_list_div {
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+    border-radius: .3rem;
+    padding: .5rem;
+    background-color: rgba(255, 0, 0, 0.233);
+}
 
+#confirm_delete_list_btn {
+    border-radius: .3rem;
+    width: 3.5rem;
+    height: 2rem;
+    background-color: rgba(0, 128, 0, 0.37);
+}
+#cancel_delete_list_btn {
+    border-radius: .3rem;
+    width: 3.5rem;
+    height: 2rem;
+    background-color: rgba(128, 19, 0, 0.37);
+}
 /* Navbar */
 
 #navbar {
@@ -236,6 +256,44 @@ header h1 {
     font-size: 1rem;
     width: 80%;
 }
+#tools_div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8rem;
+    width: 100%;
+}
+/* tools */
+#tools_options {
+    position: absolute;
+    margin-right: 2.5rem;
+    padding: .1rem;
+    background-color: #102F5e;
+    border-radius: .3rem;
+    color: white;
+    font-size: .7rem;
+    height: fit-content;
+    width: fit-content;
+}
+#tools_options ul{
+    list-style: none;
+}
+#tools_options li {
+    margin: .2rem;
+    cursor: pointer;
+    border-radius: .3rem;
+    background-color: #133a75;
+    padding: .3rem;
+}
+#tools_options li:hover {
+    background-color: #194a92;
+}
+#tools_div > button {
+    padding-bottom: .8rem;
+}
+
+
+
+/* Footer */
 footer p{
     text-align: center;
     padding-top: 1rem;

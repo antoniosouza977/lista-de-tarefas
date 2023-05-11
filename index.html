@@ -10,6 +10,8 @@
     <script src="scripts/script.js" defer></script>
      <!-- Font Awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- FavIcon -->
+     <link rel="shortcut icon" href="imgs/fav-icon.png" type="image/x-icon">
     <title>Lista de Tarefas</title>
 </head>
 <body>
@@ -42,6 +44,15 @@
                 </button>
                 <button id="del-list-btn">
                     <i class="fa-sharp fa-solid fa-circle-minus"></i>
+                </button>
+            </div>
+            <div id="confirm_delete_list_div" style="display: none;">
+                <p id="msg_to_delete_list"></p>
+                <button id="confirm_delete_list_btn">
+                    <i class="fa-sharp fa-solid fa-check"></i>
+                </button>
+                <button id="cancel_delete_list_btn">
+                    <i class="fa-solid fa-ban"></i>
                 </button>
             </div>
 
@@ -110,6 +121,17 @@
                     <i class="fa-sharp fa-solid fa-trash"></i>
                 </button>
             </div>
+        </div>
+        <div id="tools_div" >
+            <div id="tools_options" style="display: none;">
+                <ul>
+                    <li id="erase_data_op">Apagar todos os dados</li>
+                    <li id="feedback_op">Relatar problema</li>
+                </ul>
+            </div>
+            <button id="tools_btn">
+                <i class="fa-solid fa-gear"></i>
+            </button>
         </div>
     </div>
     <footer>

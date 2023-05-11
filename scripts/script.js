@@ -11,7 +11,9 @@ const name_newTaskLi_input = document.querySelector('#add-new-list-input');
 const current_list_div = document.querySelector('#current-list-div');
 const new_list_div = document.querySelector('#new-list-div');
 const list_buttons_div = document.querySelector('#list-buttons-div');
-
+const del_list_btn = document.querySelector('#del-list-btn')
+const confirm_delete_list_div = document.querySelector('#confirm_delete_list_div')
+const msg_to_delete_list = document.querySelector('#msg_to_delete_list');
 
 current_list_select.addEventListener('input', () => {
     localStorage.setItem('listvalue',current_list_select.value); 
@@ -28,6 +30,53 @@ new_list_add_btn.addEventListener('click', () => {
     name_newTaskLi_input.value = '';
     name_newTaskLi_input.focus();
 });
+del_list_btn.addEventListener('click', () => {
+    msg_to_delete_list.innerHTML = `Tem certeza que deseja deletar a lista <strong>${current_list_select.value}</strong> ?`
+    current_list_div.style.display = 'none';
+    list_buttons_div.style.display = 'none';
+    confirm_delete_list_div.style.display = 'flex'
+
+    const cancel_delete_list_btn = document.querySelector('#cancel_delete_list_btn')
+
+    cancel_delete_list_btn.addEventListener('click', () => {
+        current_list_div.style.display = 'flex';
+        list_buttons_div.style.display = 'flex';
+        confirm_delete_list_div.style.display = 'none';
+    });
+
+    const confirm_delete_list_btn = document.querySelector('#confirm_delete_list_btn');
+
+    confirm_delete_list_btn.addEventListener('click', () => {
+        if (current_list_select.length > 1) {
+            let current_list_value = current_list_select.value;
+            let list_options = document.querySelectorAll('#tasks-lists-sel option');
+    
+            list_options.forEach((list) => {
+                if (list.value === current_list_value) {
+    
+                    let listClass = current_list_select.value.replace(/\s/g, '-');
+                    tasks.forEach((task) => {
+                        if (task.classList.contains(`${listClass}`)){
+                    task.remove();
+                    }});
+                    
+                list.remove();
+                current_list_select.value = current_list_select[0].value;
+                current_list_div.style.display = 'flex';
+                list_buttons_div.style.display = 'flex';
+                confirm_delete_list_div.style.display = 'none'
+                };        
+            });
+            tasks = document.querySelectorAll('.task');
+            refresh_lists();
+        } else {
+            msg_to_delete_list.innerHTML = `Impossível deletar <strong>${current_list_select.value}</strong>, você precisa ter pelo menos uma lista ativa!`;
+            confirm_delete_list_btn.style.display = 'none';
+        }           
+    });
+});
+
+
 new_list_cancel_btn.addEventListener('click', () => {
    toggleNewListsDivs();  
 });
@@ -96,7 +145,7 @@ const filter = document.querySelector('#tasks-filter')
 filter.addEventListener('change', () => {
     refresh_filter(); 
   });
-  
+
 /* Criação de novas tarefas */
 
 const new_task_btn = document.querySelector("#new-task-btn");
@@ -236,6 +285,35 @@ document.addEventListener('click', (e) => {
         storageTasks();
     }
 });
+/* Tools */
+
+const tools_btn = document.querySelector('#tools_btn')
+const erase_data_op = document.querySelector('#erase_data_op')
+const feedback_op = document.querySelector('#feedback_op')
+
+tools_btn.addEventListener('click', () => {
+
+    const tools_options_div = document.querySelector('#tools_options');
+    let tools_options_display = tools_options_div.style.display;
+    
+    if (tools_options_display === 'none'){
+        tools_options_div.style.display = 'flex';
+    } else if (tools_options_display === 'flex') {
+        tools_options_div.style.display = 'none';
+    }
+});
+
+erase_data_op.addEventListener('click', () => {
+    let confirm_ask = confirm('Tem certeza que deseja deletar todos os dados?');
+    if (confirm_ask) {
+        localStorage.clear();
+        location.reload(); 
+    }
+});
+
+feedback_op.addEventListener('click', () => {
+    window.open('https://wa.me/5567991214516','_blank')
+})
 
 /* Funçoes de uso geral */
 
