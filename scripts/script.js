@@ -31,14 +31,18 @@ new_list_add_btn.addEventListener('click', () => {
     name_newTaskLi_input.focus();
 });
 del_list_btn.addEventListener('click', () => {
-    msg_to_delete_list.innerHTML = `Tem certeza que deseja deletar a lista <strong>${current_list_select.value}</strong> ?`
-    current_list_div.style.display = 'none';
-    list_buttons_div.style.display = 'none';
-    confirm_delete_list_div.style.display = 'flex'
+    const option_selected = current_list_select.value
+    const confirm_delete_list_btn = document.querySelector('#confirm_delete_list_btn')
+    if (current_list_select.length > 1) {
 
-    const cancel_delete_list_btn = document.querySelector('#cancel_delete_list_btn')
+        msg_to_delete_list.innerHTML = `Tem certeza que deseja deletar a lista <strong>${current_list_select.value}</strong> ?`
+        current_list_div.style.display = 'none';
+        list_buttons_div.style.display = 'none';
+        confirm_delete_list_div.style.display = 'flex'
 
-    cancel_delete_list_btn.addEventListener('click', () => {
+        const cancel_delete_list_btn = document.querySelector('#cancel_delete_list_btn')
+
+        cancel_delete_list_btn.addEventListener('click', () => {
         current_list_div.style.display = 'flex';
         list_buttons_div.style.display = 'flex';
         confirm_delete_list_div.style.display = 'none';
@@ -47,35 +51,37 @@ del_list_btn.addEventListener('click', () => {
     const confirm_delete_list_btn = document.querySelector('#confirm_delete_list_btn');
 
     confirm_delete_list_btn.addEventListener('click', () => {
-        if (current_list_select.length > 1) {
-            let current_list_value = current_list_select.value;
-            let list_options = document.querySelectorAll('#tasks-lists-sel option');
-    
-            list_options.forEach((list) => {
-                if (list.value === current_list_value) {
-    
-                    let listClass = current_list_select.value.replace(/\s/g, '-');
-                    tasks.forEach((task) => {
-                        if (task.classList.contains(`${listClass}`)){
-                    task.remove();
-                    }});
-                    
-                list.remove();
-                current_list_select.value = current_list_select[0].value;
-                current_list_div.style.display = 'flex';
-                list_buttons_div.style.display = 'flex';
-                confirm_delete_list_div.style.display = 'none'
-                };        
-            });
-            tasks = document.querySelectorAll('.task');
-            refresh_lists();
-        } else {
-            msg_to_delete_list.innerHTML = `Impossível deletar <strong>${current_list_select.value}</strong>, você precisa ter pelo menos uma lista ativa!`;
-            confirm_delete_list_btn.style.display = 'none';
-        }           
-    });
-});
+        
+        let list_options = document.querySelectorAll('#tasks-lists-sel option');
 
+        list_options.forEach((list) => {
+            if (list.value === option_selected) {
+
+                let listClass = option_selected.replace(/\s/g, '-');
+                tasks.forEach((task) => {
+                    if (task.classList.contains(`${listClass}`)){
+                task.remove();
+                }});
+                
+            list.remove();
+            };
+            current_list_div.style.display = 'flex';
+            list_buttons_div.style.display = 'flex';
+            confirm_delete_list_div.style.display = 'none'         
+        });
+        current_list_select.value = current_list_select[0].value;
+        tasks = document.querySelectorAll('.task');
+        refresh_lists();
+    });
+    } else {
+        msg_to_delete_list.innerHTML = `Impossível deletar <strong>${current_list_select.value}</strong>, você precisa ter pelo menos uma lista ativa!`;
+        confirm_delete_list_btn.style.display = 'none';
+        current_list_div.style.display = 'none';
+        list_buttons_div.style.display = 'none';
+        confirm_delete_list_div.style.display = 'flex'
+    }
+});
+    
 
 new_list_cancel_btn.addEventListener('click', () => {
    toggleNewListsDivs();  
@@ -413,11 +419,7 @@ const refresh_filter = () => {
 }
 
 
- document.addEventListener('DOMContentLoaded', () =>{
-    tasks.forEach(task => {
-        task.style.display = 'flex'
-    })
-    
+ document.addEventListener('DOMContentLoaded', () =>{    
      if((localStorage.getItem('tasks') === null) && (localStorage.getItem('lists') === null)){
         localStorage.setItem('lists', current_list_select.innerHTML)
         localStorage.setItem('tasks', tasks_mainBox.innerHTML)
@@ -428,6 +430,6 @@ const refresh_filter = () => {
     if (localStorage.getItem('listvalue') != null) {
         current_list_select.value = localStorage.getItem('listvalue')
     }
-    refresh_lists();
     tasks = document.querySelectorAll('.task')
+    refresh_lists();
 })
